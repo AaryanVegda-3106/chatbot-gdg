@@ -44,3 +44,6 @@ streamlit app.py
 After running, the application should be accessible via your web browser, typically at `http://127.0.0.1:5000` or a similar address.
 
 
+## admin credentials
+username: admin
+password: admin123
