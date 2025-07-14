@@ -165,7 +165,7 @@ def show_admin_dashboard():
     
     # Sidebar navigation with improved styling
     with st.sidebar:
-        st.image("./Resources/Logo.png", use_container_width=True)
+        st.image("./Resources/logo_SOU_Logo.png", use_container_width=True)
         
         st.markdown('<div class="sidebar-content">', unsafe_allow_html=True)
         st.markdown('<div class="sidebar-header">🎯 Navigation</div>', unsafe_allow_html=True)
