@@ -175,7 +175,7 @@ st.markdown("""
 
 # Sidebar with improved styling
 with st.sidebar:
-    st.image(".Resources/logo_SOU_Logo.png", use_container_width=True, caption="Silver Oak University")
+    st.image("./Resources/logo_SOU_Logo.png", use_container_width=True, caption="Silver Oak University")
     
     # Welcome Section
     st.markdown("""
