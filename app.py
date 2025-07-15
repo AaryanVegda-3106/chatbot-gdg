@@ -7,7 +7,7 @@ from database import init_database, get_course_data, save_chat, get_or_create_us
 
 # Must be the first Streamlit command
 st.set_page_config(
-    page_title="University Probe Assistant",
+    page_title="University Course Assistant",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -52,7 +52,7 @@ Example interactions:
 
 # Initialize chat history in session state
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
+    st.session_state.chat_history = []  # This will store (user_msg, bot_msg, timestamp) tuples
 if 'current_question' not in st.session_state:
     st.session_state.current_question = ""
 if 'chat' not in st.session_state:
@@ -60,11 +60,7 @@ if 'chat' not in st.session_state:
 
 def get_ai_response(user_input):
     try:
-        prompt = f"Context: {context}
-
-User: {user_input}
-
-Response:"
+        prompt = f"Context: {context}\n\nUser: {user_input}\n\nResponse:"
         response = st.session_state.chat.send_message(prompt)
         save_chat(user_input, response.text)
         return response.text
@@ -89,10 +85,10 @@ example_questions = [
 def set_question(question):
     st.session_state.current_question = question
 
-# Custom CSS with Material Icons and sidebar styling
+# Custom CSS with improved sidebar styling
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap');
     html, body, [class^="st"], .main, .sidebar-section, .sidebar-header, .sidebar-link, .chat-message, .user-message, .bot-message, .timestamp, .example-question, .stButton>button, .stTextInput>div>div>input {
         font-family: 'Lexend', sans-serif !important;
     }
@@ -177,76 +173,57 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Sidebar
+# Sidebar with improved styling
 with st.sidebar:
-    st.image("./Resources/logo_SOU_Logo.png", use_container_width=True, caption="Silver Oak University")
-
-    # Toggle button
+    st.image("C:/Users/adveg/OneDrive/Desktop/logo_SOU_Logo.png", use_container_width=True, caption="Silver Oak University")
+    
+    # Welcome Section
     st.markdown("""
-        <div id="sidebar-toggle" style="text-align:right; margin-bottom:10px;">
-            <span class="material-icons" id="toggle-icon" style="cursor:pointer; font-size:24px;">
-                keyboard_double_arrow_right
-            </span>
+        <div class="sidebar-section">
+            <div class="sidebar-header">👋 Welcome!</div>
+            <p>I'm here to help you explore our academic programs and answer your questions about admissions.</p>
         </div>
-        <script>
-        const waitForElement = (selector, callback) => {
-            const el = window.parent.document.querySelector(selector);
-            if (el) return callback(el);
-            setTimeout(() => waitForElement(selector, callback), 100);
-        };
-
-        waitForElement('section[data-testid="stSidebar"]', (sidebar) => {
-            const toggleIcon = window.parent.document.getElementById('toggle-icon');
-            let isOpen = true;
-            toggleIcon.onclick = () => {
-                if (isOpen) {
-                    sidebar.style.width = '0';
-                    sidebar.style.overflow = 'hidden';
-                    sidebar.style.transition = 'width 0.3s ease';
-                    toggleIcon.textContent = '>>';
-                    isOpen = false;
-                } else {
-                    sidebar.style.width = 'inherit';
-                    sidebar.style.overflow = 'auto';
-                    toggleIcon.textContent = '<<';
-                    isOpen = true;
-                }
-            };
-        });
-        </script>
     """, unsafe_allow_html=True)
-
-    st.markdown("""<div class="sidebar-section">
-        <div class="sidebar-header">👋 Welcome!</div>
-        <p>I'm here to help you explore our academic programs and answer your questions about admissions.</p>
-    </div>""", unsafe_allow_html=True)
-
-    st.markdown("""<div class="sidebar-section"><div class="sidebar-header">💭 Example Questions</div>""", unsafe_allow_html=True)
-
+    
+    # Example Questions Section
+    st.markdown("""
+        <div class="sidebar-section">
+            <div class="sidebar-header">💭 Example Questions</div>
+    """, unsafe_allow_html=True)
+    
     for question in example_questions:
         if st.button(f"🔹 {question}", key=f"btn_{question}", 
                     help="Click to ask this question",
                     use_container_width=True):
             set_question(question)
             st.rerun()
-
+    
     st.markdown("</div>", unsafe_allow_html=True)
-
-    st.markdown("""<div class="sidebar-section">
-        <div class="sidebar-header">🔗 Quick Links</div>
-        <a href="https://silveroakuni.ac.in/#" class="sidebar-link">📚 University Website</a>
-        <a href="https://silveroakuni.ac.in/admission" class="sidebar-link">🎓 Admission Portal</a>
-        <a href="https://studentportal.silveroakuni.ac.in/UMSStudents/login.aspx" class="sidebar-link">👤 Student Dashboard</a>
-    </div>""", unsafe_allow_html=True)
-
-    st.markdown("""<div class="sidebar-section">
-        <div class="sidebar-header">📞 Contact Support</div>
-        <p>📞 Helpline: 079-35201300</p>
-        <p>📧 Email: info@silveroakuni.ac.in</p>
-    </div>""", unsafe_allow_html=True)
+    
+    # Quick Links Section
+    st.markdown("""
+        <div class="sidebar-section">
+            <div class="sidebar-header">🔗 Quick Links</div>
+            <a href="https://silveroakuni.ac.in/#" class="sidebar-link">📚 University Website</a>
+            <a href="https://silveroakuni.ac.in/admission" class="sidebar-link">🎓 Admission Portal</a>
+            <a href="https://studentportal.silveroakuni.ac.in/UMSStudents/login.aspx" class="sidebar-link">👤 Student Dashboard</a>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # Contact Support Section
+    st.markdown("""
+        <div class="sidebar-section">
+            <div class="sidebar-header">📞 Contact Support</div>
+            <p>📞 Helpline: 079-35201300</p>
+            <p>📧 Email: info@silveroakuni.ac.in</p>
+        </div>
+    """, unsafe_allow_html=True)
 
 # Main chat interface
-st.markdown("<h1 style='color:#800020;'>🤖 University Course Assistant</h1>", unsafe_allow_html=True)
+st.markdown(
+    "<h1 style='color:#800020;'>🤖 University Course Assistant</h1>",
+    unsafe_allow_html=True
+)
 st.markdown("--------------------------------")
 
 # Chat container
@@ -256,12 +233,14 @@ chat_container = st.container()
 for message_data in st.session_state.chat_history:
     with chat_container:
         col1, col2 = st.columns([6,4])
+        
+        # Handle both formats of chat history (with and without timestamp)
         if len(message_data) == 3:
             user, bot, timestamp = message_data
         else:
             user, bot = message_data
             timestamp = datetime.now(pytz.timezone('Asia/Kolkata')).strftime('%H:%M')
-
+            
         with col1:
             st.markdown(f"""
                 <div class="chat-message user-message">
@@ -290,9 +269,16 @@ with input_col2:
     send_button = st.button("Send", use_container_width=True)
 
 if send_button and user_input:
+    # Get AI response
     ai_response = get_ai_response(user_input)
+    
+    # Get current time in IST
     current_time = datetime.now(pytz.timezone('Asia/Kolkata')).strftime('%H:%M')
+    
+    # Update chat history with timestamp
     st.session_state.chat_history.append((user_input, ai_response, current_time))
+    
+    # Clear input
     st.session_state.current_question = ""
     st.rerun()
 
