@@ -60,7 +60,7 @@ if 'chat' not in st.session_state:
 
 def get_ai_response(user_input):
     try:
-        prompt = f"Context: {context}
+        prompt = f"Context: {context}"
 
 User: {user_input}
 
