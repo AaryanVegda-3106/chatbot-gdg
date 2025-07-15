@@ -1,4 +1,4 @@
-# University probe assistant
+# University course assistant
 
 ## Description
 This is a Python project that appears to be a web application, possibly interacting with a database given the presence of `database.py`. It also includes an admin section, as indicated by `pages/admin.py`.
