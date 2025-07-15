@@ -495,12 +495,12 @@ with st.sidebar:
                     sidebar.style.width = '0';
                     sidebar.style.overflow = 'hidden';
                     sidebar.style.transition = 'width 0.3s ease';
-                    toggleIcon.textContent = '>>';
+                    toggleIcon.textContent = 'keyboard_double_arrow_right';
                     isOpen = false;
                 } else {
                     sidebar.style.width = 'inherit';
                     sidebar.style.overflow = 'auto';
-                    toggleIcon.textContent = '<<';
+                    toggleIcon.textContent = 'keyboard_double_arrow_left';
                     isOpen = true;
                 }
             };
