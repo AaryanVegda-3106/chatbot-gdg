@@ -64,7 +64,7 @@ def get_ai_response(user_input):
 
 User: {user_input}
 
-Response:"
+Response:
         response = st.session_state.chat.send_message(prompt)
         save_chat(user_input, response.text)
         return response.text
