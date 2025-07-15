@@ -477,7 +477,7 @@ with st.sidebar:
     st.markdown("""
         <div id="sidebar-toggle" style="text-align:right; margin-bottom:10px;">
             <span class="material-icons" id="toggle-icon" style="cursor:pointer; font-size:24px;">
-                <<
+                <
             </span>
         </div>
         <script>
