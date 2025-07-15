@@ -477,7 +477,7 @@ with st.sidebar:
     st.markdown("""
         <div id="sidebar-toggle" style="text-align:right; margin-bottom:10px;">
             <span class="material-icons" id="toggle-icon" style="cursor:pointer; font-size:24px;">
-                keyboard_double_arrow_left
+                <<
             </span>
         </div>
         <script>
@@ -495,12 +495,12 @@ with st.sidebar:
                     sidebar.style.width = '0';
                     sidebar.style.overflow = 'hidden';
                     sidebar.style.transition = 'width 0.3s ease';
-                    toggleIcon.textContent = 'keyboard_double_arrow_right';
+                    toggleIcon.textContent = '>>';
                     isOpen = false;
                 } else {
                     sidebar.style.width = 'inherit';
                     sidebar.style.overflow = 'auto';
-                    toggleIcon.textContent = 'keyboard_double_arrow_left';
+                    toggleIcon.textContent = '<<';
                     isOpen = true;
                 }
             };
