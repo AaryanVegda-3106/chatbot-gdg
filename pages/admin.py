@@ -17,7 +17,7 @@ import pytz
 
 # Must be the first Streamlit command
 st.set_page_config(
-    page_title="University Course Assistant",
+    page_title="University Probe Assistant",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
