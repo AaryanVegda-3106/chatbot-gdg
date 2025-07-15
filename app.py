@@ -246,7 +246,7 @@ with st.sidebar:
     </div>""", unsafe_allow_html=True)
 
 # Main chat interface
-st.markdown("<h1 style='color:#800020;'>🤖 University Probe Assistant</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color:#800020;'>🤖 University Course Assistant</h1>", unsafe_allow_html=True)
 st.markdown("--------------------------------")
 
 # Chat container
