@@ -286,7 +286,7 @@ if send_button and user_input:
 st.markdown(
     """
     <div style='text-align: center; color: gray; padding: 1rem;'>
-        © 2025 Aaryan Vegda. All rights reserved.
+        © 2025 Silver Oak University. All rights reserved.
     </div>
     """, 
     unsafe_allow_html=True
