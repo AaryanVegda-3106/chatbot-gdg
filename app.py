@@ -221,7 +221,7 @@ with st.sidebar:
 
 # Main chat interface
 st.markdown(
-    "<h1 style='color:#800020;'>🤖 University Course Assistant</h1>",
+    "<h1 style='color:#800020;'> Converso : The University Course Assistant</h1>",
     unsafe_allow_html=True
 )
 st.markdown("--------------------------------")
